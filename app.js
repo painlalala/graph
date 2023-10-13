@@ -6,6 +6,8 @@ const {ClientSecretCredential, DefaultAzureCredential} = require('@azure/identit
 const authProviders =
   require('@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials');
 
+require('dotenv').config()
+
 const app = express();
 
 app.use(express.json());
@@ -359,6 +361,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
-app.listen(port, () => {
+app.listen(process.env.PORT, process.env.HOST, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
