@@ -90,7 +90,7 @@ app.get('/auth/callback', (req, res) => {
   const tokenRequest = {
     code: req.query.code,
     scopes: ['User.ReadWrite.All', 'User.Read.All'],
-    redirectUri: 'http://localhost:3000/auth/callback',
+    redirectUri: 'http://0.0.0.0:3000/auth/callback',
   };
 
   pca.acquireTokenByCode(tokenRequest).then((response) => {
