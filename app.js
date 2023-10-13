@@ -35,7 +35,7 @@ const pca = new msal.ConfidentialClientApplication(msalConfig)
 
 const authCodeUrlParameters = {
   scopes: ['User.ReadWrite.All', 'User.Read.All'],
-  redirectUri: 'http://20.123.199.204:3000/auth/callback',
+  redirectUri: 'https://20.123.199.204:3000/auth/callback',
 };
 
 app.use(session({
@@ -90,7 +90,7 @@ app.get('/auth/callback', (req, res) => {
   const tokenRequest = {
     code: req.query.code,
     scopes: ['User.ReadWrite.All', 'User.Read.All'],
-    redirectUri: 'http://20.123.199.204:3000/auth/callback',
+    redirectUri: 'https://20.123.199.204:3000/auth/callback',
   };
 
   pca.acquireTokenByCode(tokenRequest).then((response) => {
