@@ -361,6 +361,6 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
-app.listen(process.env.PORT, process.env.HOST, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
