@@ -35,7 +35,7 @@ const pca = new msal.ConfidentialClientApplication(msalConfig)
 
 const authCodeUrlParameters = {
   scopes: ['User.ReadWrite.All', 'User.Read.All'],
-  redirectUri: 'http://0.0.0.0:3000/auth/callback',
+  redirectUri: 'http://20.123.199.204:3000/auth/callback',
 };
 
 app.use(session({
