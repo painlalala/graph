@@ -370,8 +370,8 @@ function ensureAuthenticated(req, res, next) {
 // });
 
 const httpsOptions = {
-  key: fs.readFileSync(path.resolve(__dirname, "../teams-backend-01.westeurope.cloudapp.azure.com/privkey.pem")),
-  cert: fs.readFileSync(path.resolve(__dirname, '../teams-backend-01.westeurope.cloudapp.azure.com/cert.pem'))
+  key: fs.readFileSync(path.resolve(__dirname, 'privkey1.pem')),
+  cert: fs.readFileSync(path.resolve(__dirname, 'cert1.pem'))
 };
 
 
