@@ -39,7 +39,7 @@ const pca = new msal.ConfidentialClientApplication(msalConfig)
 
 const authCodeUrlParameters = {
   scopes: ['User.ReadWrite.All', 'User.Read.All'],
-  redirectUri: 'https://teams-backend-01.westeurope.cloudapp.azure.com/auth/callback',
+  redirectUri: 'https://teams-backend-01.westeurope.cloudapp.azure.com:3000/auth/callback/',
 };
 
 app.use(session({
@@ -94,7 +94,7 @@ app.get('/auth/callback', (req, res) => {
   const tokenRequest = {
     code: req.query.code,
     scopes: ['User.ReadWrite.All', 'User.Read.All'],
-    redirectUri: 'https://teams-backend-01.westeurope.cloudapp.azure.com/auth/callback/',
+    redirectUri: 'https://teams-backend-01.westeurope.cloudapp.azure.com:3000/auth/callback/',
   };
 
   pca.acquireTokenByCode(tokenRequest).then((response) => {
