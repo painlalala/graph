@@ -78,7 +78,7 @@ const tokenCredential = new ClientSecretCredential(tenantId, clientId, clientSec
 // });
 
 app.get('/', (req, res) => {
-  res.send(req.session.authenticated ? `${req.session}` : 'Logged out');
+  res.send(req.session.authenticated ? `${req.session.accessToken}` : 'Logged out');
 });
 
 app.get('/login', (req, res) => {
