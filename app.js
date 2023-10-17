@@ -5,6 +5,11 @@ const graph = require('@microsoft/microsoft-graph-client');
 const {ClientSecretCredential, DefaultAzureCredential} = require('@azure/identity');
 const authProviders =
   require('@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
+const privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
+const certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
 
 require('dotenv').config()
 
@@ -361,6 +366,18 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
-app.listen(process.env.PORT, () => {
+// app.listen(process.env.PORT, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });
+
+const httpsOptions = {
+  key: fs.readFileSync('../teams-backend-01.westeurope.cloudapp.azure.com/privkey.pem'),
+  cert: fs.readFileSync('../teams-backend-01.westeurope.cloudapp.azure.com/your/cert.pem')
+};
+
+
+const server = https.createServer(httpsOptions, app);
+
+server.listen(3000, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
