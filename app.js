@@ -8,6 +8,7 @@ const authProviders =
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
+const path = require("path");
 
 require('dotenv').config()
 
@@ -369,8 +370,8 @@ function ensureAuthenticated(req, res, next) {
 // });
 
 const httpsOptions = {
-  key: fs.readFileSync('../teams-backend-01.westeurope.cloudapp.azure.com/privkey.pem'),
-  cert: fs.readFileSync('../teams-backend-01.westeurope.cloudapp.azure.com/your/cert.pem')
+  key: fs.readFileSync(path.resolve(__dirname, "../teams-backend-01.westeurope.cloudapp.azure.com/privkey.pem")),
+  cert: fs.readFileSync(path.resolve(__dirname, '../teams-backend-01.westeurope.cloudapp.azure.com/cert.pem'))
 };
 
 
